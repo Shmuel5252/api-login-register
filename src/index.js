@@ -2,9 +2,12 @@ require('dotenv').config({ quiet: true });
 
 const express = require('express')
 const mongoose = require('mongoose');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 app.use(express.json());
+
+app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
     res.json({ message: 'API is running' })
